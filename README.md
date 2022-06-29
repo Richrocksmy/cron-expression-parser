@@ -11,7 +11,7 @@ This application can be used to parse a given cron expression and then display i
 ## Prequisites
 
 - Java 16 :coffee:
-- Gradle
+- Gradle :elephant:
 
 ---
 
@@ -31,7 +31,7 @@ Where the fields are in the following format:
 |```<month>```        | 1 - 12                   |, - * /                 |
 |```<day-of-week>```  | 1 - 7                    |, - * ? /               |
 
-For a detailed explanation on how to use or create a cron expression, [this](https://crontogo.com/blog/the-complete-guide-to-cron/) is a handy guide.
+For a detailed explanation on how to use or create a cron expression, [this](https://crontogo.com/blog/the-complete-guide-to-cron/) is a handy guide. :notebook:
 
 ### Running the Application :rocket:
 
@@ -42,7 +42,6 @@ be executed in your preferred manner:
 
 Using your IDE of choice, run the ```main()``` method in the ```org.richrocksmy.cronexpressionparser.Application``` class (don't forget to setup the input parameters in the run configuration!)
 
-(In some versions of IntelliJ this causes an ```The JavaExec.main property has been deprecated. This is scheduled to be removed in Gradle 8.0. Please use the mainClass property instead.```)
 
 #### In the terminal using Gradle wrapper
 
@@ -54,11 +53,17 @@ In the root of the project directory, run:
 
 In the root of the project directory, first build the jar using:
 
+```./gradlew clean shadow```
 
 Then execute the jar using:
 
-java -jar "*/15 0 1,15 * 1-5 /usr/bin/find"
+```java -jar build/libs/cron-expression-parser-1.0-SNAPSHOT-all.jar "*/15 0 1,15 * 1-5 /usr/bin/find"```
 
+### Running the tests
+
+In the terminal, run:
+
+```./gradlew clean test```
 
 ---
 
@@ -66,8 +71,8 @@ java -jar "*/15 0 1,15 * 1-5 /usr/bin/find"
 
 Certain cron functionality has been marked as out of scope for this implementation, the following items are _not_ supported in this implementation of the parser:
 
-- ```<month>``` - Support for 3 character month strings (JAN - DEC) <br>
+- ```<month>``` - Support for 3 character month strings (JAN-DEC) <br>
 - ```<day-of-week>``` - Support for 3 character day strings (SUN-SAT) <br>
 - ```<day-of-week>``` - Support 'L' (last) and # (nth day of the month) <br>
 - ```<day-of-month>``` - Support 'L' (last) and 'W' (weekday) <br>
-- Other special timeUnit input strings such as ```@yearly```
+- Other special time input strings such as ```@yearly```
