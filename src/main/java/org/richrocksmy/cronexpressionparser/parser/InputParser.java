@@ -3,6 +3,10 @@ package org.richrocksmy.cronexpressionparser.parser;
 import lombok.AccessLevel;
 import lombok.Getter;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 @Getter
 public final class InputParser {
 
@@ -83,6 +87,7 @@ public final class InputParser {
       throw new ParsingException("No value for <command> supplied");
     }
 
-    return input[5];
+    return Stream.of(Arrays.copyOfRange(input, 5, input.length))
+        .collect(Collectors.joining(" "));
   }
 }

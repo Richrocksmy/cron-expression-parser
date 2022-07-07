@@ -119,4 +119,17 @@ class InputParserTest {
     assertThat(parsingException.getMessage()).isEqualTo("No value for <command> supplied");
   }
 
+  @Test
+  @DisplayName("Input parser should handle a complex command of more than one element")
+  public void shouldHandleComplexCommand() {
+    // Given
+    String[] input =  {"0 1 2 3 4 /usr/bin/find . -name '.gitignore'"};
+
+    // When
+    InputParser parsedInput = new InputParser(input);
+
+    // Then
+    assertThat(parsedInput.getCommand()).isEqualTo("/usr/bin/find . -name '.gitignore'");
+  }
+
 }
